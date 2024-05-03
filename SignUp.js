@@ -208,7 +208,7 @@ function saveImageToDatabase(imageDataUrl) {
     })
     .then(() => {
       console.log("Image data URL saved to the database successfully.");
-      window.location ="index.html";
+      window.location ="index1.html";
     })
     .catch((error) => {
       console.error("Error saving image data URL to the database:", error);
@@ -288,7 +288,7 @@ function login() {
           console.log("Login successful!");
           document.getElementById("message_log")
           saveCredentials_log(username, password);
-          window.location ="index.html";
+          window.location ="index1.html";
         } else {
           // Password doesn't match
           document.getElementById("message_log").innerHTML = "*Invalid password";

@@ -2,14 +2,21 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="logo.png" class="never_mind" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
     <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
-    <link rel="stylesheet" href="Main_style.css" />
+    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="SignUp.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="logo.png">
+    <link rel="stylesheet" href="SignUp.css">
     <title>GoChat</title>
 </head>
 
@@ -30,312 +37,127 @@
         </svg>
         <div class="blur"></div>
     </div>
-    <!-- main -->
-    <nav class="sidebar">
-        <header>
-            <div class="image-text">
-                <span class="image">
-                    <img class="my_img" id="user_img" src="logo.png" alt="" />
-                </span>
 
-                <div class="text logo-text">
-                    <span class="name">GoChat</span>
-                    <span class="profession" id="usertext" onload="text_call()"></span>
-                </div>
-            </div>
-            <i class="bx bx-chevron-right toggle" style="display: none"></i>
-        </header>
+    <div class="section">
+        <div class="container">
+            <div class="row full-height justify-content-center">
+                <div class="col-12 text-center align-self-center py-5">
+                    <div class="section pb-5 pt-5 pt-sm-2 text-center">
+                        <h6 class="mb-0 pb-3"><span>Log In </span><span>Sign Up</span></h6>
+                        <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
+                        <label for="reg-log">
 
-        <div class="menu-bar">
-            <div class="menu" id="menu">
-                <li class="search-box" style="display: none">
-                    <i class="bx bx-search icon"></i>
-                    <input type="text" placeholder="Search Ganes..." />
-                </li>
+                        </label>
+                        <div class="card-3d-wrap mx-auto">
+                            <div class="card-3d-wrapper">
+                                <div class="card-front">
+                                    <div class="center-wrap">
+                                        <div class="section text-center">
+                                            <h4 class="mb-4 pb-3">Log In</h4>
+                                            <div class="form-group">
+                                                <input type="text" name="logemail" class="form-style"
+                                                    placeholder="User ID" id="logemail" autocomplete="off">
+                                                <i class='bx bx-user-circle input-icon'></i>
+                                            </div>
+                                            <div class="form-group mt-2">
+                                                <input type="password" name="logpass" class="form-style"
+                                                    placeholder="Password" id="logpass" autocomplete="off">
+                                                <i class='bx bx-lock input-icon'></i>
+                                                <i class='bx bxs-show eye-see-icon' id="showl" onclick="showHidePassl()"></i>
+                                                <i class='bx bxs-hide eye-see-icon' style="display: none;" id="hidel" onclick="showHidePassl()"></i>
+                                            </div>
+                                            <p id="message_log"></p>
+                                            <a href="#" class="btn mt-4" style="text-decoration: none;" onclick="login()">Login</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-back">
+                                    <div class="center-wrap">
+                                        <div class="section text-center">
+                                            <h4 class="mb-4 pb-3">Sign Up</h4>
 
-                <ul class="menu-links">
-                    <li class="nav-link" id="chat">
-                        <a href="#" id="roomHomeBtn" onclick="homeOpen()">
-                            <i class="bx bx-conversation icon"></i>
-                            <span class="text nav-text">Chat</span>
-                        </a>
-                    </li>
+                                            <div class="form-group" style="display: block;" id="part1">
+                                                <input type="text" name="logname" class="form-style"
+                                                    placeholder="User ID" id="usernameInput" autocomplete="off">
+                                                <i class='bx bx-user input-icon'></i>
+                                            </div>
 
-                    <li class="nav-link" id="search" onclick="hideall()">
-                        <a href="#">
-                            <i class="bx bx-search-alt icon"></i>
-                            <span class="text nav-text">Search</span>
-                        </a>
-                    </li>
+                                            <div class="form-group mt-2" style="display: block;" id="part2">
+                                                <input type="password" name="logpass" class="form-style"
+                                                    placeholder="Password" id="passwordInput" autocomplete="off">
+                                                <i class='bx bx-lock input-icon'></i>
+                                                <i class='bx bxs-show eye-see-icon' id="show" onclick="showHidePass()"></i>
+                                                <i class='bx bxs-hide eye-see-icon' style="display: none;" id="hide" onclick="showHidePass()"></i>
+                                            </div>
 
-                    <li class="nav-link" id="details">
-                        <a href="#" id="roomDetailsBtn">
-                            <i class="bx bx-message-detail icon"></i>
-                            <span class="text nav-text">Room Details</span>
-                        </a>
-                    </li>
 
-                    <li class="nav-link" id="profile">
-                        <a href="#" onclick="profile_show()">
-                            <i class="bx bx-user-circle icon"></i>
-                            <span class="text nav-text">Profile</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+                                            <div class="form-group mt-2" style="display: block;" id="part3">
+                                                <input type="password" name="logpass" class="form-style"
+                                                    placeholder="Confirm Password" id="passwordInput2"
+                                                    autocomplete="off">
+                                                <i class='bx bxs-lock-alt input-icon'></i>
+                                                <i class='bx bxs-show eye-see-icon' id="showc" onclick="showHidePassc()"></i>
+                                                <i class='bx bxs-hide eye-see-icon' style="display: none;" id="hidec" onclick="showHidePassc()"></i>
+                                                <p id="message"></p>
+                                            </div>
 
-            <div class="bottom-content">
-                <li class="logout">
-                    <a href="#">
-                        <i class="bx bx-log-out icon" style="margin-left: -2px"></i>
-                        <span class="text nav-text">Logout</span>
-                    </a>
-                </li>
+                                            <div class="form-group mt-2" style="display: none;" id="part4">
+                                                <div class="container_edit">
+                                                    <div class="edit" id="edit">
+                                                        <i class='bx bx-edit icon'></i>
+                                                        <input type="file" name="files[]" id="files" style="display: none;" />
+                                                    </div>
+                                                    <div class="pro_pic">
+                                                        <img src="https://cdn-icons-png.freepik.com/512/9706/9706583.png"
+                                                            width="200px" height="200px"
+                                                            style="background-color: #ffff; border-radius: 100px;"
+                                                            id="my_img"
+                                                            alt=""><br>
+                                                    </div>
+                                                </div>
+                                                <h2>User Id</h2>
+                                                <a onclick="uploadImage()" href="#" class="btn mt-4" style="text-decoration: none;" id="btn_img_next">skip &
+                                                    continue</a>
+                                                    <button id="click" onclick="retrieveImages()">vlivk </button>
+                                            </div>
 
-                <li class="mode">
-                    <div class="sun-moon">
-                        <i class="bx bx-moon icon moon"></i>
-                        <i class="bx bx-sun icon sun"></i>
-                    </div>
-                    <span class="mode-text text">Dark mode</span>
-
-                    <div class="toggle-switch">
-                        <span class="switch"></span>
-                    </div>
-                </li>
-            </div>
-        </div>
-    </nav>
-    <div class="contain_time" id="time_bottom">
-        <div class="time_text">
-            <p id="timetext">hello</p>
-        </div>
-    </div>
-    <!-- chat room  -->
-    <section class="home" id="home">
-        <div class="space"></div>
-        <div class="top_details" id="top_details" style="display: none">
-            <img src="" alt="pic" id="pro_pic_display" />
-            <span id="user_name_sender-reciver"></span>
-            <i class="bx bx-dots-vertical-rounded icon_more" onclick="show_more()"></i>
-        </div>
-        <div class="output" id="output" style="text-align: left; margin-bottom: 70px; display: none"></div>
-        <i class="bx bx-chevron-down down_icon" id="down_icon" onclick="scrollToBottom()"></i>
-        <div id="ad" class="output ad" style="margin-bottom: 70px; display: block">
-            <img src="logo.png" alt=".logo" width="200px"
-                style="opacity: 0.7; filter: drop-shadow(2px 2px 5px grey)" /><br />
-            <span class="gradient-text">GoChat</span>
-            <p style="color: var(--text-dark-light)">Hey👋👋!!..</p>
-            <br />
-            <p style="color: var(--text-dark-light); width: 80%; margin: auto">
-                No Chats are selected, try finding the person in the Chats or Search
-                them...
-            </p>
-            <p style="color: var(--text-dark-light); width: 80%; margin: auto">
-                Can't find the Person?? Share the
-                <a href="" style="color: var(--text-link); text-decoration: none">Invite Link</a>
-            </p>
-        </div>
-        <div class="contain">
-            <div class="microbtn">
-                <i class="bx bx-image-add icon icon_pin" onclick="clickattach()"></i>
-                <input type="file" name="files[]" id="files" />
-            </div>
-            <div class="send" style="display: flex">
-                <input type="text" id="msg" class="input_msg" placeholder="Message" autocomplete="off" />
-                <div class="sendbtn" onclick="send()">
-                    <i class="bx bx-send icon send_icon"></i>
-                </div>
-            </div>
-            <div class="microbtn" id="btn_microphone">
-                <i class="bx bx-microphone icon icon_micro" id="rec_btn"></i>
-            </div>
-            <div class="record" id="record" style="display: none;">
-                <i class='bx bx-x icon_no' id="btn_discard"></i>
-                <p class="time_rec" id="time_rec">00:00</p>
-                <i class='bx bxs-circle icon_play' id="icon_play"></i>
-                <div class="main_voice" id="main_voice" style="display: block;">
-                    <div class="visualizer">
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                        <div class="bar"></div>
-                    </div>
-                    <div class="visualizer2">
-                        <div class="bar2"></div>
-                        <div class="bar2"></div>
-                        <div class="bar2"></div>
-                        <div class="bar2"></div>
-                        <div class="bar2"></div>
-                        <div class="bar2"></div>
-                        <div class="bar2"></div>
-                        <div class="bar2"></div>
-                        <div class="bar2"></div>
-                        <div class="bar2"></div>
-                        <div class="bar2"></div>
-                        <div class="bar2"></div>
-                        <div class="bar2"></div>
-                        <div class="bar2"></div>
-                        <div class="bar2"></div>
-                        <div class="bar2"></div>
+                                            <a href="#" class="btn mt-4" onclick="checkpass()" id="sumbitSignIn"
+                                                style="text-decoration: none;" style="display: block;">submit</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <input type="range" class="range_rec" id="range_rec" style="display: none;">
-                <div class="play-pause">
-                    <i class='bx bx-pause icon_pause' ></i>
-                    <i class='bx bx-play icon_play_main' style="display: none;" id="play_rec_btn"></i>
-                </div>
-                <div class=" sendbtn_mic voicesend" id="pause_rec_btn">
-                    <i class="bx bx-send icon send_icon_mic"></i>
-                </div>
-            </div>
-
-
-            <!-- <div class="app">
-                <audio id="audio" controls></audio>
-            </div> -->
-
-
-        </div>
-    </section>
-    <div class="overlay" id="overlay">
-        <div class="popup" id="popup">
-            <h2>Upload this Image ...</h2>
-            <p>
-                Would you like to share this image, <br />
-                you can delet it also....
-            </p>
-            <img id="myimg" width="200px" height="auto" /><br />
-            <div class="send_pop">
-                <div class="sendbtn" id="upload" onclick="uploadImage()">
-                    <i class="bx bx-send icon send_icon"></i>
-                </div>
-                <div class="sendbtn" id="cancel" onclick="cancelImage()">
-                    <h2 class="text_cancel_btn">Cancel...</h2>
-                </div>
             </div>
         </div>
     </div>
 
-    <div class="overlay_del over_del" id="overlay_del">
-        <div class="popup_del pop_del" id="popup_del">
-            <h2 id="del_text">Delete This Chat with ?</h2>
-            <p>Messages would not me accessible...</p>
-            <div class="send_pop send_pop_del">
-                <div class="sendbtn" id="upload" onclick="delChat()">
-                    <i class="bx bx-check send_icon"></i>
-                </div>
-                <div class="sendbtn" id="cancel" onclick="cancelDelChat()">
-                    <h2 class="text_cancel_btn">Cancel...</h2>
-                </div>
-            </div>
-        </div>
     </div>
+    <svg class="top-right" width="219" height="147" viewBox="0 0 219 147" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <rect opacity="0.18" x="10.4252" y="75.8326" width="7.50168" height="7.50168"
+            transform="rotate(110.283 10.4252 75.8326)" fill="#686868" stroke="white" stroke-width="1.22683" />
+        <rect opacity="0.18" x="180.869" y="138.825" width="7.50168" height="7.50168"
+            transform="rotate(110.283 180.869 138.825)" fill="#686868" stroke="white" stroke-width="1.22683" />
+        <rect x="69.4713" y="-91.84" width="180.485" height="180.485" transform="rotate(20.2832 69.4713 -91.84)"
+            stroke="white" stroke-opacity="0.1" stroke-width="1.22683" />
+    </svg>
 
-    <div class="overlay overlay_more" id="overlay_more">
-        <div class="popup popup_more" id="popup_more">
-            <ul>
-                <li class="more clear" onclick="deleteChat()">
-                    <i class="bx bx-comment-x icon_m"></i>Clear Chat
-                </li>
-                <li class="more mute" onclick="muteChat()">
-                    <i class="bx bx-volume-mute icon_m"></i>Mute
-                </li>
-                <li class="more delete" onclick="deleteChat()">
-                    <i class="bx bx-user-x icon_m"></i>Delete Chat
-                </li>
-                <li class="more detail" onclick="userDetails()">
-                    <i class="bx bxs-user-detail icon_m"></i>User Details
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="overlay_user_id" id="overlay_user_id">
-        <div class="popup_user_id" id="popup_user_id">
-            <div class="left_user">
-                <h2>Search User..</h2>
-                <div class="nav-link-user" id="user_search" style="display: none">
-                    <i class="bx bx-arrow-back icon" onclick="showall()"></i>
-                    <input type="text" class="search" onkeyup="searchUsers()" id="search_box" placeholder="User Id"
-                        autocomplete="off" />
-                    <br />
-                </div>
-                <div class="user_output" id="user_output" style="display: none"></div>
-            </div>
-            <div class="right_user">
-                <h2>User not Found ?</h2>
-                <img src="user_not.png" width="200px" height="200px" alt="404 not found"
-                    style="margin-top: 40px; opacity: 0.8" />
-                <h4 style="font-weight: normal">
-                    Hey👋 Aren't able to find your friend??
-                </h4>
-                <p>
-                    Share this
-                    <a href="" style="color: var(--text-link); text-decoration: none">Invite Link</a>
-                    and experience a free chat...
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="overlay overlay_img" id="overlay_img">
-        <div class="popup popup_img" id="popup_img">
-            <h2 id="img_tag_text"></h2>
-            <div class="align_img">
-                <i class="bx bx-chevron-left"></i>
-                <img id="myimg_image" /><br />
-                <i class="bx bx-chevron-right"></i>
-            </div>
-        </div>
-    </div>
-
-    <div class="overlay overlay_user" id="overlay_user">
-        <div class="popup popup_user" id="popup_user">
-            <h2 id="user_tag_text"></h2>
-            <div class="align_img">
-                <i class="bx bx-chevron-left"></i>
-                <img id="myimg_image" /><br />
-                <i class="bx bx-chevron-right"></i>
-            </div>
-        </div>
-    </div>
-
-    <section id="roomDetailsSection" class="room-details-section" style="display: none">
-        <!-- Your room details content goes here -->
-    </section>
-
-    <section id="profile_sec" class="profile_sec" style="display: none">
-        <div class="container_img_user_profile">
-            <div class="overlay_user_profile">
-                <div class="card">
-                    <img id="my_pro_logo" src="logo.png" alt="" width="150px" height="150px"
-                        style="border-radius: 1000px" />
-                    <div id="my_pro_text" class="card_content">This is the content</div>
-                </div>
-                <h1 class="user_id_text">Your User Profile Card</h1>
-            </div>
-        </div>
-        <div class="profile_content" id="profile_content">
-            <h1 class="main_text_main" id="test_user_pro">Hello, Hello</h1>
-        </div>
-    </section>
-    <!-- bg -->
-    <audio src="send.mp3" id="sendsound"></audio>
-    <audio src="recieve.mp3" id="getsound"></audio>
-    <script src="Main_script.js"></script>
+    <svg class="bottom-left" width="232" height="191" viewBox="0 0 232 191" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50.5685" cy="172.432" r="112.068" stroke="white" stroke-opacity="0.09" />
+        <g opacity="0.1">
+            <path d="M26.4932 5.20547L228.856 172.432" stroke="#D9D9D9" />
+            <rect x="22.4384" y="0.5" width="6.15753" height="6.15753" fill="#686868" stroke="white" />
+            <rect x="224.801" y="169.027" width="6.15753" height="6.15753" fill="#686868" stroke="white" />
+            <circle cx="121.819" cy="83.613" r="1.7774" fill="#323232" stroke="white" />
+        </g>
+    </svg>
+    <script src="SignUp.js">
+        
+    </script>
 </body>
 
 </html>
